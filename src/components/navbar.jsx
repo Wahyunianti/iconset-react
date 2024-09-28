@@ -68,7 +68,7 @@ function navbar() {
                             </g>
                         </svg>
                         <h1>
-                            by Yusuf & Yuni
+                            by Yuni
                         </h1>
 
                     </div>
