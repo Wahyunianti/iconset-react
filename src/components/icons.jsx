@@ -1,9 +1,23 @@
+import React, { useState } from 'react';
 import '../index.css';
 import IconSet from '../dataicon/iconset';
+import Modal from '../modals/modal';
+import { svgdata } from '../data/svgdata';
 
-function icons() {
+function Icons() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState(null);
+  
+  const openModal = (iconId) => {
+      const icon = svgdata.find(item => item.id === iconId);
+      setSelectedIcon(icon);
+      setIsModalOpen(true);
+  };
 
-  const iconNames = Array(10).fill('facebook.svg');
+  const closeModal = () => {
+      setIsModalOpen(false);
+      setSelectedIcon(null);
+  };
 
   return (
     <div>
@@ -17,11 +31,10 @@ function icons() {
         <div className="boxicon">
           <div className="blockkonten">
             <div className="boxcontainer">
-
-              {iconNames.map((iconName, index) => (
-                <IconSet key={index} iconName={iconName} />
+              {svgdata.map(icon => (
+                <IconSet key={icon.id} iconId={icon.id} iconName={icon.title} iconData={icon.svgpath} onEditClick={openModal} />
               ))}
-
+              {isModalOpen && <Modal icon={selectedIcon} closeModal={closeModal} />}
             </div>
           </div>
 
@@ -33,4 +46,4 @@ function icons() {
   )
 }
 
-export default icons
+export default Icons

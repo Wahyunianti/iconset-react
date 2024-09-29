@@ -9,7 +9,7 @@ const SvgEditor = forwardRef(({ svgContent }, ref) => {
     }, [svgContent, ref]);
 
     return (
-        <div ref={ref} />
+        <div className='svgatas' ref={ref} />
     );
 });
 
