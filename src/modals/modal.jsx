@@ -32,20 +32,19 @@ const Modal = ({ icon, closeModal }) => {
             console.error('SVG element not found');
             return;
         }
-
+    
         const updatedSvgContent = getUpdatedSvgContent();
-
         svgElement.innerHTML = updatedSvgContent;
-
+    
         try {
             const canvas = await html2canvas(svgElement, {
                 backgroundColor: null,
                 scale: 1,
             });
-
+    
             const link = document.createElement('a');
-            link.href = canvas.toDataURL('image/png');
-            link.download = 'image.png';
+            link.href = canvas.toDataURL('image/png', 1.0);
+            link.download = 'yunicon.png';
             link.click();
         } catch (error) {
             console.error('Error capturing SVG:', error);
