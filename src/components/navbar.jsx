@@ -9,7 +9,6 @@ function navbar() {
                 <span className="color2 ku"></span>
                 <span className="color1 hi"></span>
                 <span className="color1 bi"></span>
-                <span className="color1 ni"></span>
                 <div className="yunicon">
                     <div className="sleret">
                         <span></span>
@@ -68,7 +67,7 @@ function navbar() {
                             </g>
                         </svg>
                         <h1>
-                            by Yuni
+                            by yunet
                         </h1>
 
                     </div>

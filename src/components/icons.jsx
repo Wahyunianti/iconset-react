@@ -8,35 +8,43 @@ function Icons() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [visibleCount, setVisibleCount] = useState(11); // Initial number of icons to display
 
   const openModal = (iconId) => {
-      const icon = svgdata.find(item => item.id === iconId);
-      setSelectedIcon(icon);
-      setIsModalOpen(true);
+    const icon = svgdata.find(item => item.id === iconId);
+    setSelectedIcon(icon);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-      setIsModalOpen(false);
-      setSelectedIcon(null);
+    setIsModalOpen(false);
+    setSelectedIcon(null);
   };
 
   const handleSearchChange = (e) => {
-      setSearchTerm(e.target.value.toLowerCase());
+    setSearchTerm(e.target.value.toLowerCase());
+  };
+
+  const loadMoreIcons = () => {
+    setVisibleCount(prevCount => prevCount + 11); // Increase count by 11
   };
 
   // Filter icons based on search term
   const filteredIcons = svgdata.filter(icon =>
-      icon.title.toLowerCase().includes(searchTerm)
+    icon.title.toLowerCase().includes(searchTerm)
   );
+
+  // Get the icons to display based on the visible count
+  const iconsToDisplay = filteredIcons.slice(0, visibleCount);
 
   return (
     <div>
       <form action="">
         <div className="searchbar">
-          <input 
-            className="inputsearch" 
-            type="text" 
-            placeholder="Search icon.." 
+          <input
+            className="inputsearch"
+            type="text"
+            placeholder="Search icon.."
             value={searchTerm}
             onChange={handleSearchChange}
           />
@@ -47,20 +55,26 @@ function Icons() {
         <div className="boxicon">
           <div className="blockkonten">
             <div className="boxcontainer">
-              {filteredIcons.map(icon => (
-                <IconSet 
-                  key={icon.id} 
-                  iconId={icon.id} 
-                  iconName={icon.title} 
-                  iconData={icon.svgpath} 
-                  onEditClick={openModal} 
+              {iconsToDisplay.map(icon => (
+                <IconSet
+                  key={icon.id}
+                  iconId={icon.id}
+                  iconName={icon.title}
+                  iconData={icon.svgpath}
+                  onEditClick={openModal}
                 />
               ))}
               {isModalOpen && <Modal icon={selectedIcon} closeModal={closeModal} />}
+              {filteredIcons.length > visibleCount && (
+                <div className="load-more">
+                  <button className='terbaru' onClick={loadMoreIcons}>Load More</button>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 }

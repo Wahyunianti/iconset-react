@@ -6,7 +6,7 @@ const IconSet = ({ iconId, iconName, iconData, onEditClick }) => {
             <div className="iconboxset" >
                 <div className='dataiconn' dangerouslySetInnerHTML={{ __html: iconData }}/>
             </div>
-            <button className="copyy" onClick={() => onEditClick(iconId)}>Edit</button>
+            <button className="copyy" onClick={() => onEditClick(iconId)}>Copy</button>
             <h2>{iconName}</h2>
         </div>
     );

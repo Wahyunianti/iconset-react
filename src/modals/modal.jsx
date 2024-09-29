@@ -82,7 +82,7 @@ const Modal = ({ icon, closeModal }) => {
                             />
                         </div>
                         <div>
-                            <label htmlFor="inputField">Width</label>
+                            <label htmlFor="inputField">Width (px)</label>
                             <input
                                 className="inputsearch svgwill"
                                 type="number"
