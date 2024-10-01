@@ -8,8 +8,8 @@ function Icons() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [visibleCount, setVisibleCount] = useState(11); // Initial number of icons to display
-
+  const [visibleCount, setVisibleCount] = useState(11); 
+  
   const openModal = (iconId) => {
     const icon = svgdata.find(item => item.id === iconId);
     setSelectedIcon(icon);
@@ -26,15 +26,13 @@ function Icons() {
   };
 
   const loadMoreIcons = () => {
-    setVisibleCount(prevCount => prevCount + 11); // Increase count by 11
+    setVisibleCount(prevCount => prevCount + 11);
   };
 
-  // Filter icons based on search term
   const filteredIcons = svgdata.filter(icon =>
     icon.title.toLowerCase().includes(searchTerm)
   );
 
-  // Get the icons to display based on the visible count
   const iconsToDisplay = filteredIcons.slice(0, visibleCount);
 
   return (
