@@ -129,7 +129,7 @@ h2 {
 }
 .main {
   position: relative;
-  height: 500px;
+  height: max-content;
 }
 .searchbar {
   display: flex;
@@ -216,7 +216,7 @@ button:active {
 .blockkonten {
   display: block;
   width: auto;
-  height: 500px;
+  height: 100vh;
   overflow-y: auto;
 }
 .blockkonten::-webkit-scrollbar {
@@ -239,7 +239,7 @@ button:active {
   flex-direction: row;
   gap: 15px;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
   height: auto;
   width: auto;
   margin-inline: 100px;
